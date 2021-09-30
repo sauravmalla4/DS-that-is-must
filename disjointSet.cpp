@@ -28,7 +28,7 @@ DSUNode* findRep(DSUNode *d){
 	if(parent==d){
 		return d;
 	}
-	d->parent=findRep(parent);
+	d->parent=findRep(parent);   // This is Path Compression
 	return d->parent;
 }
 
@@ -45,7 +45,7 @@ bool _union(int val1,int val2){
 	}
 	
 	if(parent1->rank>=parent2->rank){
-		parent1->rank+=(parent1->rank==parent2->rank)?1:0;
+		parent1->rank+=(parent1->rank==parent2->rank)?1:0;    //Increase the rank by 1 iff both the set representative has Equal Rank.
 		parent2->parent=parent1;
 	}
 	else{
